@@ -21,11 +21,11 @@ public class MortgagePaymentCalculator {
     private JFrame mainFrame;
     
     MortgagePaymentCalculator() {
-    	  CreditLabel = new JLabel("Сумма кредита");
+    	  CreditLabel = new JLabel("Сумма кредита(не меньше 1000)");
 	        CreditField = new JTextField( "0");
 	        CreditField.setHorizontalAlignment(JTextField.RIGHT);
 	        rubLabel = new JLabel("руб");
-	        srokLabel = new JLabel("Срок кредита(в годах)");
+	        srokLabel = new JLabel("Срок кредита (в годах)");
 	        srokField = new JTextField("0");
 	        srokField.setHorizontalAlignment(JTextField.RIGHT);
 	        yearsLabel = new JLabel("лет");
@@ -41,7 +41,10 @@ public class MortgagePaymentCalculator {
                     double Credit = Double.parseDouble(CreditField.getText());
                     int srok = Integer.parseInt(srokField.getText());
                     double stavka = Double.parseDouble(stavkaField.getText());
-                    
+                    if(srok <=0 || Credit < 1000 || stavka < 0.01){
+                    	resultLabel.setText("Проверьте введённые данные");
+                    	
+                    }else{
                     stavka /= 100.0;
                 	stavka /= 12.0;		
                 		srok = srok * 12;    
@@ -50,7 +53,7 @@ public class MortgagePaymentCalculator {
                     
             resultLabel.setText("<html>На срок <font style='color: red; font-weight: bold;'>" + srok + 
            "</font> месяца, ежемесячная выплата составит <font style='color: red; font-weight: bold;'>" +
-            		currencyFormat.format(Credit) + "</font> </html>");
+            		currencyFormat.format(Credit) + "</font> </html>");}
                 }
                 catch ( NumberFormatException nfe ) {
                     resultLabel.setText("Проверьте введённые данные");
