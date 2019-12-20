@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.text.NumberFormat;
 
 import javax.swing.*;
- 
+ //начало
 public class MortgagePaymentCalculator {
     private JTextField CreditField;
     private JLabel CreditLabel;
